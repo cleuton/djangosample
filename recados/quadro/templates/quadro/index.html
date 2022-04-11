@@ -9,7 +9,7 @@
             <p>Seus recados:</p>
             <ul>
             {% for recado in seus_recados %}
-                <li><a href="/recado/{{ recado.id }}/">{{ recado.titulo }}</a></li>
+                <li><a href="/quadro/{{ recado.id }}/">{{ recado.titulo }}</a></li>
             {% endfor %}
             </ul>
         {% endif %}
@@ -17,7 +17,7 @@
             <p>Recados de quem você segue:</p>
             <ul>
             {% for recado in recados_seguidos %}
-                <li><a href="/recado/{{ recado.id }}/">{{ recado.titulo }}</a></li>
+                <li><a href="/quadro/{{ recado.id }}/">{{ recado.titulo }}</a></li>
             {% endfor %}
             </ul>
         {% endif %}

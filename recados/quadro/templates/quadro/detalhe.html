@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>Quadro de recados</title>
+    </head>
+    <body>
+        <p>Recado: {{ recado.titulo }}</p>
+        <p>Em: {{ recado.data|date:"d/m/Y H:i:s"}}</p>
+        <p>Autor: {{ recado.autor.username }}</p>
+        <hr>
+        <p>{{ recado.texto }}</p>
+        {% if recado.autor == logado%}
+            <p><a href="/quadro/excluir/{{ recado.id }}">Excluir recado</a></p>
+        {% endif %}
+    </body>
+</html>

@@ -2,12 +2,41 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from django.http import HttpResponse
+from django.http import Http404, HttpResponse
 from django.template import loader
 from .models import Recado, Seguidor
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from django.core.exceptions import PermissionDenied
+from django.shortcuts import redirect
+
+@login_required
+def excluir(request,id_recado):
+	try:
+		recado = Recado.objects.get(id=id_recado)
+	except Recado.DoesNotExist:
+		raise Http404("Recado inexistente")
+	if request.user != recado.autor:
+		raise PermissionDenied()
+	recado.delete()
+	return redirect('index')
+
+
+@login_required
+def detalhe(request,id_recado):
+	template = loader.get_template('quadro/detalhe.html')
+	try:
+		recado = Recado.objects.get(id=id_recado)
+	except Recado.DoesNotExist:
+		raise Http404("Recado inexistente")
+
+	context = {
+		'recado': recado,
+		'logado': request.user
+	}
+	return HttpResponse(template.render(context, request))
+
 
 @login_required
 def index(request):
