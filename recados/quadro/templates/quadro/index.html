@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Quadro de recados</title>
+    </head>
+    <body>
+        <p>Último acesso: {{ ultima_data|date:"d/m/Y H:i:s" }}</p>
+        <p>Temos {{ quantidade_recados }} recado(s).</p>
+        {% if seus_recados %}
+            <p>Seus recados:</p>
+            <ul>
+            {% for recado in seus_recados %}
+                <li><a href="/recado/{{ recado.id }}/">{{ recado.titulo }}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% if recados_seguidos %}
+            <p>Recados de quem você segue:</p>
+            <ul>
+            {% for recado in recados_seguidos %}
+                <li><a href="/recado/{{ recado.id }}/">{{ recado.titulo }}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+        <p><a href="{% url 'logout' %}">Sair da aplicação</a></p>
+    </body>
+</html>
