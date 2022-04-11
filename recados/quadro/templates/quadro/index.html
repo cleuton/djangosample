@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <title>Quadro de recados</title>
@@ -21,6 +22,8 @@
             {% endfor %}
             </ul>
         {% endif %}
+
+        <p><a href="{% url 'form_incluir' %}">Incluir novo recado</a></p>
 
         <p><a href="{% url 'logout' %}">Sair da aplicação</a></p>
     </body>

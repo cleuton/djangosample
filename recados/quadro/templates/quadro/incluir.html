@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quadro de recados</title>
+    </head>
+    <body>
+        <form action="{% url 'incluir' %}" method="post">
+            {% csrf_token %}
+            <fieldset>
+                {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                <label for="titulo">Título:</label><br>
+                <input type="text" name="titulo" id="titulo" />
+                <br>
+                <label for="texto">Texto:</label>
+                <br>
+                <textarea name="texto" id="texto" rows="10" cols="50"></textarea>
+            </fieldset>
+            <input type="submit" value="Cadastrar">
+        </form>
+    </body>
+</html>

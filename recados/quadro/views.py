@@ -12,6 +12,20 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect
 
 @login_required
+def form_incluir(request):
+	template = loader.get_template('quadro/incluir.html')
+	context = {}
+	return HttpResponse(template.render(context, request))
+
+@login_required
+def incluir(request):
+	recado = Recado(titulo=request.POST['titulo'], \
+					texto=request.POST['texto'], \
+					autor=request.user)
+	recado.save()
+	return redirect("index")
+
+@login_required
 def excluir(request,id_recado):
 	try:
 		recado = Recado.objects.get(id=id_recado)
