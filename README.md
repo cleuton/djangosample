@@ -3,6 +3,7 @@
 
 This application is a tutorial on creating Django web apps. There's a PDF (in Portuguese) explaining all the steps. I will create an english version soon. 
 
+This is the video tutorial for the application: https://youtu.be/8NpG4B0567c (Portuguese / Português).
 
 ## Install the application
 
