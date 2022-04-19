@@ -72,6 +72,19 @@ To run the E2E tests:
 python manage.py test
 ```
 
+## Docker
+
+There is a **Dockerfile** and you can build an image with this command: 
+```
+docker build -t <image name>:<image version> .
+docker build -t test:0.0.1 .
+```
+
+Assuming you have a PostgreSQL container named "some-postgres": 
+```
+docker run --name app -p 8000:8000 --link some-postgres:some-postgres -e DATABASE_URL="some-postgres" -d test:0.0.1
+```
+
 
 
 
